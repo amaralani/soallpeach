@@ -12,6 +12,7 @@ public class Main {
                 stringBuilder.append("0");
             stringBuilder.append("\n");
         });
+        stringBuilder.deleteCharAt(stringBuilder.lastIndexOf("\n"));
         System.out.println(stringBuilder.toString());
     }
 

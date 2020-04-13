@@ -3,7 +3,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
         String content = new String(Files.readAllBytes(Paths.get(args[0])));
         String[] lines = content.split(System.getProperty("line.separator"));
@@ -16,13 +15,15 @@ public class Main {
     }
 
     private static boolean isPrime(int num) {
-        boolean isPrime = true;
-        for (int divisor = 2; divisor <= num / 2; divisor++) {
-            if (num % divisor == 0) {
-                isPrime = false;
-                break; // num is not a prime, no reason to continue checking
+        if (num > 2 && num % 2 == 0) {
+            return false;
+        }
+        int top = (int) Math.sqrt(num) + 1;
+        for (int i = 3; i < top; i += 2) {
+            if (num % i == 0) {
+                return false;
             }
         }
-        return isPrime;
+        return true;
     }
 }

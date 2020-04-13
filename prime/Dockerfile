@@ -1,5 +1,5 @@
 FROM openjdk
-ADD . /build/
-WORKDIR /build/src
-RUN javac ./ir/maralani/Main.java
-ENTRYPOINT [ "sh", "-c", "java ir/maralani/Main" ]
+COPY Main.java Main.java
+COPY test.txt test.txt
+RUN javac Main.java
+ENTRYPOINT [ "java", "Main" ]

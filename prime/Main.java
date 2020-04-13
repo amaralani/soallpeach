@@ -1,15 +1,19 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
         Files.lines(Paths.get(args[0])).forEach(line -> {
             if (isPrime(Integer.parseInt(line)))
-                System.out.println("1");
+                stringBuilder.append("1");
             else
-                System.out.println("0");
+                stringBuilder.append("0");
+            stringBuilder.append("\n");
         });
+        System.out.println(stringBuilder.toString());
     }
 
     private static boolean isPrime(int num) {

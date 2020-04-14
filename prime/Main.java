@@ -17,7 +17,7 @@ public class Main {
         if(num % 5 == 0) return "0\n";
         if(num % 7 == 0) return "0\n";
         int top = (int) Math.sqrt(num) + 1;
-        for (int i = 3; i < top; i += 2) {
+        for (int i = 11; i < top; i += 2) {
             if (num % i == 0) {
                 return "0\n";
             }

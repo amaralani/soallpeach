@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
         Files.lines(Paths.get(args[0])).forEach(line -> stringBuilder.append(isPrime(Integer.parseInt(line))));
+        stringBuilder.deleteCharAt(stringBuilder.lastIndexOf("\n"));
         System.out.println(stringBuilder.toString());
     }
 
@@ -21,6 +22,6 @@ public class Main {
                 return "0\n";
             }
         }
-        return "1";
+        return "1\n";
     }
 }

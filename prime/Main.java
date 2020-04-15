@@ -11,13 +11,11 @@ public class Main {
     }
 
     private static String isPrime(int num) {
-        if (num < 3) return "1\n";
+        if (num <= 3) return "1\n";
         if(num % 2 == 0) return "0\n";
         if(num % 3 == 0) return "0\n";
-        if(num % 5 == 0) return "0\n";
-        if(num % 7 == 0) return "0\n";
         int top = (int) Math.sqrt(num) + 1;
-        for (int i = 11; i < top; i += 2) {
+        for (int i = 5; i < top; i += 2) {
             if (num % i == 0) {
                 return "0\n";
             }

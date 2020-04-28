@@ -1,3 +1,3 @@
 FROM openjdk:13-alpine
-COPY countme-0.0.1-SNAPSHOT.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY countme-vertex-1.0-SNAPSHOT-jar-with-dependencies.jar app.jar
+ENTRYPOINT ["java","-jar","app.jar"]

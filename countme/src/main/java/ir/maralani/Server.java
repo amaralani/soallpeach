@@ -29,6 +29,7 @@ public class Server {
 
             // Wait until server socket is closed
             httpChannel.channel().closeFuture().sync();
+            new CounterHandler().run();
         } finally {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();

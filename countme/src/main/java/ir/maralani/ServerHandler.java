@@ -10,19 +10,18 @@ import io.netty.util.CharsetUtil;
 import org.apache.commons.lang3.StringUtils;
 
 public class ServerHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
-    private static int count = 0;
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) {
         if (request.uri().equals("/") && request.method().equals(HttpMethod.POST)) {
             String stringBody = request.content().toString(CharsetUtil.UTF_8);
-            count += Integer.parseInt(StringUtils.trim(stringBody));
+            CounterHandler.addNumber(StringUtils.trim(stringBody));
             writeResponse(ctx, Unpooled.EMPTY_BUFFER);
             return;
         }
 
         if (request.uri().equals("/count") && request.method().equals(HttpMethod.GET)) {
-            ByteBuf responseContent = Unpooled.copiedBuffer(String.valueOf(count), CharsetUtil.UTF_8);
+            ByteBuf responseContent = Unpooled.copiedBuffer(String.valueOf(CounterHandler.getCount()), CharsetUtil.UTF_8);
             writeResponse(ctx, responseContent);
             return;
         }

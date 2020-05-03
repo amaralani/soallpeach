@@ -9,7 +9,7 @@ object Server extends Spark with App {
 
   private var list: List[String] = new ArrayList()
 
-  port(8080)
+  port(80)
 
   post("/", (request, response) => {
     list.add(request.body())

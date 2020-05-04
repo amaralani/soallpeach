@@ -31,7 +31,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>ir.maralani.Server</mainClass>
+                                    <mainClass>ir.maralani.Starter</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>

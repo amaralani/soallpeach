@@ -17,11 +17,11 @@ public class ServerFour extends AbstractVerticle {
 
         router.route().path("/").method(HttpMethod.POST).handler(routingContext -> {
             String body = StringUtils.trim(routingContext.getBodyAsString());
-            Starter.list.add(body);
+            Starter.count.getAndAccumulate(Integer.valueOf(body), (left, right) -> left + right);
             routingContext.response().setStatusCode(200).end();
         });
         router.route().path("/count").method(HttpMethod.GET).handler(routingContext -> {
-            routingContext.response().setStatusCode(200).end(String.valueOf(Starter.list.stream().mapToInt(Integer::valueOf).sum()));
+            routingContext.response().setStatusCode(200).end(String.valueOf(Starter.count.get()));
         });
         server.requestHandler(router).listen(80);
     }

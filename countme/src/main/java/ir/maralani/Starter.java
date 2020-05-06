@@ -2,11 +2,11 @@ package ir.maralani;
 
 import io.vertx.core.Vertx;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Starter {
-    public static List<String> list = new ArrayList<>();
+    public static AtomicInteger count = new AtomicInteger();
+
     public static void main(String[] args) {
         Vertx vertx = Vertx.vertx();
         vertx.deployVerticle(new ServerOne());
